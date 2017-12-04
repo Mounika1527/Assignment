@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<h1>Edit Record</h1>
+	<div class="col-md-4">
+		<form th:object="${student}" th:action="@{/update}" method="post">
+		
+		<input type="hidden" name="studentId" class="form-control"
+				 th:value="${student.studentId}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+		
+			<input type="text" name="name" class="form-control"
+				 th:value="${student.name}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<input type="text" name="emailId" class="form-control"
+				th:value="${student.emailId}" th:readonly="readonly"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			<input type="text" name="phone" class="form-control"
+				th:value="${student.phone}"/>
+			<div style="clear: both; display: block; height: 10px;"></div>	
+			<input type="text" name="dob" class="form-control"
+				th:value="${student.dob}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="text" name="address.doorNo" class="form-control"
+				th:value="${student.address.doorNo}"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="text" name="address.area" class="form-control"
+				th:value="${student.address.area}"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="text" name="address.city" class="form-control"
+				th:value="${student.address.city}"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="text" name="address.pincode" class="form-control"
+				th:value="${student.address.pincode}"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			
+			
+			<input type="submit" class="btn btn-success" value="Update"></input>
+			
+
+		
+			
+		</form>
+	</div>
+</body>
+</html>

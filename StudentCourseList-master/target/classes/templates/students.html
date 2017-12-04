@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+ 
+
+</head>
+<body>
+
+
+
+	<div class="col-md-4">
+		<h1>Students</h1>
+	</div>
+	
+	
+    
+    <div style="padding:0 20px">
+    <table class="table table-striped" border="1">
+		<tr>
+		    <th>Name</th>
+		    <th>Email</th>
+		    <th>Phone</th>
+		    <th>Dob</th>
+		    <th>Door No</th>
+		    <th>Area</th>
+		    <th>City</th>
+		    <th>Pincode</th>
+		    <th>Courses</th>
+		    <th>Actions</th>
+		</tr>  
+    	<tr th:each = "student : ${studentslist}">
+    		<td  class="tdName" th:text="${student.name}"></td>
+    		<td class="tdEmailId" th:text="${student.emailId}"></td>
+    		<td class="tdPhone" th:text="${student.phone}"></td>
+    		<td class="tdDob" th:text="${student.dob}"></td>
+    		<td class="tdDoorNo" th:text="${student.address.doorNo}"></td>
+    		<td class="tdArea" th:text="${student.address.area}"></td>
+    		<td class="tdCity" th:text="${student.address.city}"></td>
+    		<td class="tdPincode" th:text="${student.address.pincode}"></td>
+    		<td>
+				<span th:each="course,iterStat : ${student.courses}">
+					<span th:text="${course.courseName}"/><th:block th:if="${!iterStat.last}">,</th:block>
+				</span>    		
+    		</td>
+    		<td><a th:href="@{/edit/{studentId}(studentId=${student.studentId})}">Edit</a>
+    		<a th:href="@{/delete/{studentId}(studentId=${student.studentId})}">Delete</a></td>
+    		
+    		<td><a th:href="@{/addStudentCourse/{studentId}(studentId=${student.studentId})}"
+    		 class="btn btn-success btn-xs">Add Course</a></td>  		
+    		</tr>
+    		 </table>
+    		 <a href="/addStudent" class="btn btn-success">Add Student</a>
+    </div>
+   </body>
+   </html>
+   		
